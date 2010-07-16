@@ -30,6 +30,5 @@
 		//include("templates/note.main.php");
 		$note->showall();
 	}
-
 	include("includes/footer.php");
 ?>
