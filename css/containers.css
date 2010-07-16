@@ -1,0 +1,267 @@
+.content-box-container
+{
+	border: 0px solid blue;
+	margin: 0 auto;
+}
+
+.content-box-right
+{
+	border: 0px solid red;
+	float: right;
+	margin-top: -30px;
+	width: 350px;
+}
+
+.content-box-right ul li
+{
+	padding-bottom: 10px;
+}
+
+.content-box-header 
+{
+	background-color: #edf3fe;
+	border-bottom: 0px solid #dfdfdf;
+	color: #333;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 14px;
+	padding: 10px 0px 10px 10px; /* top right bottom left */
+	width: 840px;
+}
+
+.content-box 
+{
+	background-color: #fff;
+	border: 0px solid #efefef;
+	padding: 10px;
+	text-align: left;
+	width: 830px;
+}
+
+.content-box ul 
+{
+	display: inline;
+	list-style: none;
+}
+
+.content-box li 
+{
+	list-style: none;
+	padding: 3px;
+}
+
+.content-box ul#note 
+{
+	border: 0px solid red;
+	margin: 0;
+	padding: 0;
+}
+
+.content-box ul#note li 
+{
+	border: 0px solid red;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 8px;
+}
+
+.content-box ul#note li label 
+{
+	border: 0px solid red;
+	display: block;
+	font-weight: bold;
+	padding-bottom: 2px;
+}
+
+.content-box ul.contact-details 
+{
+	border: 0px solid red;
+	margin: 0;
+	padding: 0;
+}
+
+.content-box ul.contact-details li 
+{
+	border: 0px solid red;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 8px;
+}
+
+.content-box ul.contact-details li label 
+{
+	border: 0px solid red;
+	display: inline;
+	float: left; /* this is what causes the width to take effect */
+	font-weight: bold;
+	padding-bottom: 2px;
+	width: 200px;
+}
+
+/* this is for the li that shows the name of client */
+.content-box ul.contact-details li.head 
+{
+	font-size: 110%;
+	font-weight: bold;
+}
+
+/** begin: forms.php page form fields **/
+
+.content-box ul#formsgen 
+{
+	border: 0px solid red;
+	margin: 0;
+	padding: 0;
+}
+
+.content-box ul#formsgen li 
+{
+	border: 0px solid red;
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 8px;
+}
+
+.content-box ul#formsgen li label 
+{
+	border: 0px solid red;
+	display: inline;
+	float: left; /* this is what causes the width to take effect */
+	font-weight: bold;
+	padding-bottom: 2px;
+	width: 300px;
+}
+
+/** end: forms.php page form fields **/
+
+#content .content-box p 
+{
+	margin: 0;
+	padding: 0;
+	padding-left: 2px;
+	/*
+	padding: 15px;
+	*/
+}
+
+#content .content-box h1 
+{
+	background-color: #edf3fe;
+	border-bottom: 0px solid #dfdfdf;
+	color: #333;
+	font-weight: bold;
+	font-family: sans-serif;
+	font-size: 14px;
+	padding: 10px;
+}
+
+#content .content-box h2 {
+	background-color: #fff;
+	/*
+	background-color: #4c93ca;
+	background-color: #efefef;
+	*/
+	border-bottom: 1px solid #dfdfdf;
+	color: #666;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px;
+	margin-bottom: 2px;
+}
+
+#content .content-box h3 {
+	color: #666;
+	padding: 5px;
+	font-size: 11px;
+}
+
+#note_form
+{
+	border: 0px solid red;
+	width: 95%;
+}
+
+#note_form textarea {
+	width: 100%;
+}
+
+/** begin: fields **/
+.fields {
+	border: 0px solid red;
+	padding: 5px;
+	/*
+	width: 65%;
+	*/
+}
+
+.fields ul {
+	border: 0px solid red;
+	list-style: none;
+	display: inline;
+	padding: 0;
+}
+
+.fields li {
+	display: inline;
+	list-style-type: none;
+	margin: 7px 0;
+}
+
+.fields label {
+	display: block;
+	padding: 0;
+	margin: 0;
+	padding: 5px 0;
+	color: #444;
+	font-weight: bold;
+	text-align: left;
+}
+
+.fields .textfield {
+	background:#fff;
+	margin:0;
+	padding: 2px 2px;
+	padding:8px 10px;
+	border:1px solid #ccc;
+	/*
+	border-right-width:0;
+	*/
+	outline-width:0;
+	-webkit-border-top-left-radius:5px;
+	-webkit-border-bottom-left-radius:5px;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+	font:14px Helvetica, Arial, Sans-serif;
+	/*
+	font:18px Helvetica, Arial, Sans-serif;
+	width:330px;
+	*/
+	width:230px;
+}
+.fields .textfield:focus {
+	outline-width:0;
+	border-color:#999;
+}
+.fields .btn {
+	background:#ccc url("../images/bg-btn.png") repeat-x 0 0;
+	display:block;
+	padding:8px 10px;
+	border:1px solid #eee;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	text-decoration:none;
+	text-align:center;
+	color:#333;
+	text-shadow:0 1px 0 #eee;
+	font:18px Helvetica, Arial, Sans-serif;
+	font-weight:bold;
+	outline:none;
+	margin-top: 30px;
+}
+/** end: fields **/

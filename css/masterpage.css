@@ -1,0 +1,152 @@
+body {
+	background-color: #e5e5e5;
+	color: #000;
+	font-family: Arial, Helvetica, sans-serif;	
+	font-size: 11px;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+a, a:visited {
+	color: #266293;
+	text-decoration: none;	
+}
+a:hover {
+	text-decoration: none;
+}
+
+img
+{
+	border: 0px;
+}
+
+#wrapper {
+	background-color: transparent;
+	border: 0px solid blue;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+#container {
+	background-color: transparent;
+	border: 0px solid red;
+	margin: auto;
+	padding: 0px 0px 0px 0px;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+#inner-container {
+	background-color: transparent;
+	border: 0px solid red;
+	height: 100%;
+	margin: auto;
+	width: 95%;
+	text-align: center;
+}
+
+#header {
+	background-color: #003366;
+	border: 0px solid #ccc;
+	color: orange;
+	font-size: 30px;
+	padding-left: 5px;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	text-align: left;
+}
+
+#navbar {
+	background-color: #003366;
+	border-bottom: 1px solid #ccc;
+	height: 20px;
+	padding-top: 12px;
+	text-align: left;
+	width: 100%;
+}
+
+#navbar ul {
+	border: 0px solid red;
+	display: inline;
+	padding: 5px;
+}
+
+#navbar ul li {
+	background-color: #939dac;
+	display: inline;
+	padding: 5px;
+	margin: 0;
+}
+
+#navbar a {
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+ul#navbar li a:active {
+	background-color: #e5e5e5;
+	color: orange;
+}
+
+#navbar a:hover {
+	text-decoration: none;
+}
+
+#footer {
+	background-color: transparent;
+	border: 0px solid #ccc;
+	color: #999;
+	height: 30px;
+	position: relative;
+	bottom: 0px;
+}
+
+#copyright {
+	border: 0px solid blue;
+	color: #999;
+	height: 100%;
+	text-vertical-align: center;
+	margin: auto;
+	padding-left: 32px;
+	text-align: left;
+}
+
+#content {
+	background-color: transparent;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	min-height: 400px;
+	text-align: left;
+	width: 100%;
+}
+
+#content h1 {
+	background-color: transparent;
+	border-bottom: 2px solid #4c93ca;
+	color: #333;
+	padding: 5px;
+	padding-bottom: 3px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#content h2 
+{
+	background-color: #efefef;
+	color: #06b;
+	font-size: 14px;
+	padding: 5px;
+}
+
+.textfield 
+{
+	background: #fff;
+	border: 1px solid #dfdfdf;
+	color: #333333;
+	padding-left: 1px;
+}
+
