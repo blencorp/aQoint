@@ -63,7 +63,7 @@
 
 		public function edit()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == '') {
 				die('You did not provide an id for this function: Contact->edit()');
 			}
@@ -196,7 +196,7 @@
 
 		public function upload()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == '') {
 				die('You did not provide id for this function: Contact->upload()');
 			}
@@ -266,7 +266,7 @@
 
 		public function note()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == "") {
 				die('You did not provide an id for this function: Contact->note()');
 			}
@@ -346,7 +346,7 @@
 		public function contactfiles($id)
 		{
 			if ($id == '') {
-				$id = $_GET['id'];
+				$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			}
 			if ($id == '') {
 				die('You did not provide an id for this function: contact->contactfiles($id)');
@@ -478,7 +478,7 @@
 
 		public function showbyid($id = '') {
 			if ($id == '') {
-				$id = $_GET['id'];
+				$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			}
 			if ($id == '') {
 				die('You did not provide an id for this function: Contact->showbyid($id)');

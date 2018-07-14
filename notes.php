@@ -1,7 +1,7 @@
 <?php
 	include("includes/header.php");
 	$action = $_GET['q'];
-	$id = $_GET['id'];
+	$id = isset($_GET['id']) ? $_GET['id'] : NULL;
     if(!$id && isset($_POST['note_id'])) {
         $id = $_POST['note_id'];
         $_GET['id'] = $id;

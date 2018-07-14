@@ -20,7 +20,7 @@
 
 		public function delete()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == '') {
 				die('You did not provide an id for this function: Notes->delete()');
 			}
@@ -47,7 +47,7 @@
 
 		public function create()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == '') {
 				die('You did not provide an id for this function: Notes->create()');
 			}
@@ -85,7 +85,7 @@
 		public function edit($id = '')
 		{
 			if ($id == '') {
-				$id = $_GET['id'];
+				$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			}
 			if ($id == '') {
 				die('You did not provide an id for this function: Notes->edit($id = \'\')');
@@ -147,7 +147,7 @@
 		public function cp_main($id = '')
 		{
 			if ($id == '') {
-				$id = $_GET['id'];
+				$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			}
 			if ($id == '') {
 				die('You did not provide an id for this function: Notes->cp_main($id = \'\')');
@@ -165,7 +165,7 @@
 		public function showbyid($id = '')
 		{
 			if ($id == '') {
-				$id = $_GET['id'];
+				$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			}
 			if ($id == '') {
 				die('You did not provide an id for this function: Notes->showbyid($id = \'\')');
