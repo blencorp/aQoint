@@ -1,0 +1,10 @@
+<?php
+return [
+	'dbhost' => "127.0.0.1",
+
+	//ESAi
+	'dbname' => "bleng3_aqoint",
+	'dbuser' => "user_bleng3_aqoint",
+
+	'dbpass' => "pass_bleng3_aqoint",
+];
