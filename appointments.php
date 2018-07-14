@@ -1,6 +1,6 @@
 <?php
 	include("includes/header.php");
-	$action = $_GET['q'];
+	$action = isset($_GET['q']) ? $_GET['q'] : NULL;
 
 	if ($action == "create") {
 		$appointment->create();

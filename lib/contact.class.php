@@ -67,7 +67,7 @@
 			if ($id == '') {
 				die('You did not provide an id for this function: Contact->edit()');
 			}
-			if ($this->nonce('edit') == $_POST['nonce']) {
+			if ($this->nonce('edit') == getNonceFromPost()) {
 				$id = $_POST['contact_id'];
 				$contact_fname = $_POST['contact_fname'];
 				$contact_mname = $_POST['contact_mname'];
@@ -200,7 +200,7 @@
 			if ($id == '') {
 				die('You did not provide id for this function: Contact->upload()');
 			}
-			if ($this->nonce('upload') == $_POST['nonce'])
+			if ($this->nonce('upload') == getNonceFromPost())
 			{
 				echo '<div class="content-box-header">File Uploaded</div>';
 				echo '<div class="content-box">';
@@ -270,7 +270,7 @@
 			if ($id == "") {
 				die('You did not provide an id for this function: Contact->note()');
 			}
-			if ($this->nonce('note') == $_POST['nonce']) {
+			if ($this->nonce('note') == getNonceFromPost()) {
 				$contact_id = $_POST['contact_id'];
 				$note_text = htmlentities($_POST['note_text']);
 				$note_user = "1";
@@ -316,7 +316,7 @@
 
 		public function search()
 		{
-			if ($this->nonce('search') == $_POST['nonce']) {
+			if ($this->nonce('search') == getNonceFromPost()) {
 				$val = $_POST['search_value'];
 				$sql = "SELECT * FROM " . TBL_CONTACTS . " WHERE contact_fname LIKE '%$val%' OR contact_mname LIKE '%$val%' OR contact_lname LIKE '%$val%'";
 				$result = mysql_query($sql);
@@ -511,7 +511,7 @@
 
 		public function create()
 		{
-			if ($this->nonce('create') == $_POST['nonce']) {
+			if ($this->nonce('create') == getNonceFromPost()) {
 				$contact_fname = $_POST['contact_fname'];
 				$contact_mname = $_POST['contact_mname'];
 				$contact_lname = $_POST['contact_lname'];

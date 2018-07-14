@@ -25,7 +25,7 @@
 
 		public function create()
 		{
-			if ($this->nonce('create') == $_POST['nonce']) {
+			if ($this->nonce('create') == getNonceFromPost()) {
 				$app_fname = $_POST['app_fname'];
 				$app_lname = $_POST['app_lname'];
 				$app_phone = $_POST['app_phone'];

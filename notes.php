@@ -1,6 +1,6 @@
 <?php
 	include("includes/header.php");
-	$action = $_GET['q'];
+	$action = isset($_GET['q']) ? $_GET['q'] : NULL;
 	$id = isset($_GET['id']) ? $_GET['id'] : NULL;
     if(!$id && isset($_POST['note_id'])) {
         $id = $_POST['note_id'];

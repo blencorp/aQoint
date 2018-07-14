@@ -30,7 +30,7 @@
 
 		public function process()
 		{
-			if ($this->nonce('process') == $_POST['nonce']) {
+			if ($this->nonce('process') == getNonceFromPost()) {
 				$search_fname = $_POST['search_fname'];
 				$search_lname = $_POST['search_lname'];
 				$search_phone = $_POST['search_phone'];

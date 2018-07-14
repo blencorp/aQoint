@@ -14,7 +14,7 @@
 
 		public function create()
 		{
-			if ($this->nonce('create') == $_POST['nonce']) {
+			if ($this->nonce('create') == getNonceFromPost()) {
 				echo '
 					<div class="content-box-header">Generate Form</div>
 					<div class="content-box">

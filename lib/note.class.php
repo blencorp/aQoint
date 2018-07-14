@@ -51,7 +51,7 @@
 			if ($id == '') {
 				die('You did not provide an id for this function: Notes->create()');
 			}
-			if ($this->nonce('create') == $_POST['nonce']) {
+			if ($this->nonce('create') == getNonceFromPost()) {
 				$contact_id = $_POST['contact_id'];
 				$note_user = "1";
 				$note_text = htmlentities($_POST['note_text']);
@@ -90,7 +90,7 @@
 			if ($id == '') {
 				die('You did not provide an id for this function: Notes->edit($id = \'\')');
 			}
-			if ($this->nonce('edit') == $_POST['nonce']) {
+			if ($this->nonce('edit') == getNonceFromPost()) {
 				$contact_id = $_POST['contact_id'];
 				$note_id = $_POST['note_id'];
 				$note_text = htmlentities($_POST['note_text']);
@@ -137,7 +137,7 @@
 
 		public function search()
 		{
-			if ($this->nonce('search') == $_POST['nonce']) {
+			if ($this->nonce('search') == getNonceFromPost()) {
 				echo 'good.';
 			} else {
 				include("templates/contact.search.php");

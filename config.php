@@ -15,4 +15,8 @@
 	$db = mysql_select_db($dbname);
 
 	DEFINE('INSITE', true);
+
+	function getNonceFromPost() {
+	    return isset($_POST['nonce']) ? $_POST['nonce'] : NULL;
+	}
 ?>
