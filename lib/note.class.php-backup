@@ -1,7 +1,7 @@
 <?php
-	class Notes 
+	class Notes
 	{
-		function __construct() 
+		function __construct()
 		{
 			//
 		}
@@ -89,7 +89,7 @@
 				$note_edit_ip = $_SERVER['REMOTE_ADDR'];
 				$note_edit_hostname = getHostByAddr($note_edit_ip);
 
-				$sql = "UPDATE " . TBL_NOTES . " SET 
+				$sql = "UPDATE " . TBL_NOTES . " SET
 								contact_id = '$contact_id',
 								note_text = '$note_text',
 								note_edit_time = '$note_edit_time',
@@ -135,7 +135,7 @@
 			}
 		}
 
-		public function cp_main($id = '') 
+		public function cp_main($id = '')
 		{
 			if ($id == '') {
 				$id = $_GET['id'];
@@ -143,18 +143,18 @@
 			echo '
 				<br />
 				<div class="content-box">
-					<a href="' . $this->config['pages']['edit'] . '&id=' . $id . '">Edit this entry</a> 
-					| 
-					<a href="' . $this->config['pages']['delete'] . '&id=' . $id . '">Delete this entry</a> 
+					<a href="' . $this->config['pages']['edit'] . '&id=' . $id . '">Edit this entry</a>
+					|
+					<a href="' . $this->config['pages']['delete'] . '&id=' . $id . '">Delete this entry</a>
 				</div>
 			';
 		}
 
-		public function showbyid($id = '') 
+		public function showbyid($id = '')
 		{
 			if ($id == '') {
 				$id = $_GET['id'];
-			} 
+			}
 			$result = $this->query($id);
 			$row = mysql_fetch_assoc($result);
 			//echo 'id: ' . $row['id'] . '<br />';
@@ -170,22 +170,22 @@
 
 			// how many rows to show per page
 			$rowsPerPage = 20;
-			
+
 			// by default we show first page
 			$pageNum = 1;
-			
+
 			// if $_GET['page'] defined, use it as page number
 			if(isset($_GET['page']))
 			{
 					$pageNum = $_GET['page'];
 			}
-			
+
 			// counting the offset
 			$offset = ($pageNum - 1) * $rowsPerPage;
-			
+
 			$sql = "SELECT * FROM " . TBL_NOTES . " ORDER BY note_id DESC LIMIT $offset, $rowsPerPage";
 			$result = mysql_query($sql) or die('Error, query failed');
-			
+
 			echo '
 				<div class="content-box-header">Notes</div>
 				<div class="content-box">
@@ -214,25 +214,25 @@
 					</table>
 				</div>
 			';
-			
+
 			// how many rows we have in database
 			$sql   = "SELECT COUNT(contact_id) AS numrows FROM " . TBL_NOTES . "";
 			$result  = mysql_query($sql) or die('Error, query failed');
 			$row     = mysql_fetch_array($result, MYSQL_ASSOC);
 			$numrows = $row['numrows'];
-			
+
 			// how many pages we have when using paging?
 			$maxPage = ceil($numrows/$rowsPerPage);
-			
+
 			// print the link to access each page
 			$self = $this->config['pages']['list'];
 			$nav  = '';
-			
+
 			if ($pageNum > 1)
 			{
 				 $page  = $pageNum - 1;
 				 $prev  = " <a href=\"$self&page=$page\">[Prev]</a> ";
-			
+
 				 $first = " <a href=\"$self&page=1\">[First Page]</a> ";
 			}
 			else
@@ -240,12 +240,12 @@
 				 $prev  = '&nbsp;'; // we're on page one, don't print previous link
 				 $first = '&nbsp;'; // nor the first page link
 			}
-			
+
 			if ($pageNum < $maxPage)
 			{
 				 $page = $pageNum + 1;
 				 $next = " <a href=\"$self&page=$page\">[Next]</a> ";
-			
+
 				 $last = " <a href=\"$self&page=$maxPage\">[Last Page]</a> ";
 			}
 			else

@@ -4,15 +4,15 @@
 		When you submit this form, a W-2 document will be generated and saved into the user's file
 	</p>
 	<br />
-	<form class="fields" method="post" action="<? echo $this->config['pages']['create']; ?>">
-		<input type="hidden" name="nonce" value="<? echo $this->nonce('create'); ?>" />
+	<form class="fields" method="post" action="<?php echo $this->config['pages']['create']; ?>">
+		<input type="hidden" name="nonce" value="<?php echo $this->nonce('create'); ?>" />
 		<ul id="formsgen">
 			<li>
 				<label>Client Name: </label>
 				<select class="textfield" name="contact_id">
-					<? 
+					<?php
 						$contact = new Contact();
-						$contact->name_id_list(); 
+						$contact->name_id_list();
 					?>
 				</select>
 			</li>

@@ -24,13 +24,13 @@
 	}
 
 	//echo 'sql: ' . $sql . '<br />';
-	
+
 	$result = mysql_query($sql) or die(mysql_error());
 
 	?>
 	<div class="content-box-header">Search Result</div>
 	<div class="content-box">
-	<?
+	<?php
 		$numrows = mysql_num_rows($result);
 		if ($numrows < 1) {
 			echo 'Could not find a matching contact.';
@@ -46,6 +46,6 @@
 	?>
 	</div>
 	<br />
-	<?
+	<?php
 	$this->cp_search();
 ?>
