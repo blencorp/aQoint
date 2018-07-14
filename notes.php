@@ -2,6 +2,10 @@
 	include("includes/header.php");
 	$action = $_GET['q'];
 	$id = $_GET['id'];
+    if(!$id && isset($_POST['note_id'])) {
+        $id = $_POST['note_id'];
+        $_GET['id'] = $id;
+    }
 
 	if ($action == 'create') {
 		$note->create();

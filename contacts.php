@@ -2,7 +2,10 @@
 	include("includes/header.php");
 	$action = $_GET['q'];
 	$id = $_GET['id'];
-
+    if(!$id && isset($_POST['contact_id'])) {
+        $id = $_POST['contact_id'];
+        $_GET['id'] = $id;
+    }
 	if ($action == 'create') {
 		$contact->create();
 	} elseif ($action == 'search') {
