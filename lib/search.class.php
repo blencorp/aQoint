@@ -1,5 +1,5 @@
 <?php
-	class Search 
+	class Search
 	{
 		var $table_notes = "notes";
 		var $table_contacts = "contacts";
@@ -22,7 +22,7 @@
 			echo '
 				<div class="content-box">
 					<a href="'.$this->config['pages']['new'].'">New Search</a>
-					 | 
+					 |
 					<a href="javascript:history.go(-1)">Go back and try again</a>
 				</div>
 			';
@@ -30,7 +30,7 @@
 
 		public function process()
 		{
-			if ($this->nonce('process') == $_POST['nonce']) {
+			if ($this->nonce('process') == getNonceFromPost()) {
 				$search_fname = $_POST['search_fname'];
 				$search_lname = $_POST['search_lname'];
 				$search_phone = $_POST['search_phone'];
@@ -48,7 +48,7 @@
 		}
 
 		protected function nonce($str='',$expires=604800) {
-			return md5(date('Y-m-d H:i',ceil(time()/$expires)*$expires).$_SERVER['REMOTE_ADDR'].$SERVER['HTTP_USER_AGENT'].$str);
+			return md5(date('Y-m-d H:i',ceil(time()/$expires)*$expires).$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].$str);
 		}
 
 		function __destruct()

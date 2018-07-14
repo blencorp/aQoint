@@ -1,11 +1,11 @@
 <div class="content-box-header">Setup Appointment</div>
 <div class="content-box">
 	<p>
-		If you would like to setup an appointment with us, please fill out the form below 
+		If you would like to setup an appointment with us, please fill out the form below
 		and we will contact you with more details.
 	</p>
-	<form class="fields" method="post" action="<? echo $this->config['pages']['create']; ?>">
-		<input type="hidden" name="nonce" value="<? echo $this->nonce('create'); ?>" />
+	<form class="fields" method="post" action="<?php echo $this->config['pages']['create']; ?>">
+		<input type="hidden" name="nonce" value="<?php echo $this->nonce('create'); ?>" />
 		<ul>
 			<li>
 				<label>Your First Name: </label>

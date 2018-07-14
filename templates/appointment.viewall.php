@@ -1,6 +1,6 @@
 <div class="content-box-header">Appointments</div>
 <div class="content-box">
-	<?
+	<?php
 		while ($row = mysql_fetch_array($result)) {
 			echo '
 				<ul class="">

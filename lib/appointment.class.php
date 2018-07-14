@@ -1,5 +1,5 @@
 <?php
-	class Appointment 
+	class Appointment
 	{
 		var $table_notes = "notes";
 		var $table_contacts = "contacts";
@@ -25,12 +25,12 @@
 
 		public function create()
 		{
-			if ($this->nonce('create') == $_POST['nonce']) {
+			if ($this->nonce('create') == getNonceFromPost()) {
 				$app_fname = $_POST['app_fname'];
 				$app_lname = $_POST['app_lname'];
 				$app_phone = $_POST['app_phone'];
 				$app_email = $_POST['app_email'];
-				$app_reason = htmlentities($_POST['app_details']);
+				$app_reason = isset($_POST['app_details']) ? htmlentities($_POST['app_details']) : '';
 				$app_user = "1";
 				$app_type = "appointment";
 				$app_create_time = time();
@@ -50,7 +50,7 @@
 
 				if ($result) {
 					$this->sendemail($app_fname, $app_lname, $app_phone, $app_email, $app_reason);
-				} 
+				}
 
 			} else {
 				require_once 'templates/appointment.form.php';
@@ -70,8 +70,8 @@
 				Email: ' . $app_email . "\r\n" . '
 				Reason: ' . $app_reason . "\r\n" . '
 			';
-			$headers = 'From: ' . $from . "\r\n" . 
-									'Reply-To: ' . $from . "\r\n" . 
+			$headers = 'From: ' . $from . "\r\n" .
+									'Reply-To: ' . $from . "\r\n" .
 									'X-Mailer: PHP/' . phpversion();
 			if (mail($to, $subject, $message, $headers)) {
 				echo 'Message sent.';
@@ -81,7 +81,7 @@
 		}
 
 		protected function nonce($str='',$expires=604800) {
-			return md5(date('Y-m-d H:i',ceil(time()/$expires)*$expires).$_SERVER['REMOTE_ADDR'].$SERVER['HTTP_USER_AGENT'].$str);
+			return md5(date('Y-m-d H:i',ceil(time()/$expires)*$expires).$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].$str);
 		}
 
 		function __destruct()

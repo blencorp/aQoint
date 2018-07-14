@@ -1,8 +1,11 @@
 <?php
 	include("includes/header.php");
-	$action = $_GET['q'];
-	$id = $_GET['id'];
-
+	$action = isset($_GET['q']) ? $_GET['q'] : NULL;
+	$id = isset($_GET['id']) ? $_GET['id'] : NULL;
+    if(!$id && isset($_POST['contact_id'])) {
+        $id = $_POST['contact_id'];
+        $_GET['id'] = $id;
+    }
 	if ($action == 'create') {
 		$contact->create();
 	} elseif ($action == 'search') {

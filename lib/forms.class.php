@@ -1,5 +1,5 @@
 <?php
-	class Forms 
+	class Forms
 	{
 		function __construct()
 		{
@@ -14,7 +14,7 @@
 
 		public function create()
 		{
-			if ($this->nonce('create') == $_POST['nonce']) {
+			if ($this->nonce('create') == getNonceFromPost()) {
 				echo '
 					<div class="content-box-header">Generate Form</div>
 					<div class="content-box">
@@ -61,9 +61,9 @@
 		{
 	    if(isset($_POST) && is_array($_POST) && count($_POST)){
 	        $data=array();
-	
+
 	        echo'<pre>POST '; print_r($_POST);echo '</pre>';
-	
+
 	        if(isset($_POST['e_a'])){
 	            $data['e_a'] = $_POST['e_a'];
 	            $data['e_b'] = $_POST['e_b'];
@@ -101,17 +101,17 @@
 	            $data['e_18'] = $_POST['e_18'];
 	            $data['e_19'] = $_POST['e_19'];
 	            $data['e_20'] = $_POST['e_20'];
-	            
+
 	            // file name will be <the current timestamp>.fdf
 	            $fdf_file = 'contact_' . $_POST['contact_id'] . '_' . time() . '.fdf';
-	            
+
 	            $fdf_dir = 'uploads';
-	            
+
 	            $pdf_doc = 'http://esai.org/bcp/contactms/forms/w2-fed.pdf';
-	            
+
 	            // generate the file content
 	            $fdf_data = $this->createFDF($pdf_doc,$data);
-	
+
 	            // write the file out
 	            if($fp=fopen($fdf_dir.'/'.$fdf_file,'w')){
 	                fwrite($fp,$fdf_data,strlen($fdf_data));
@@ -148,7 +148,7 @@
 		}
 
 		protected function nonce($str='',$expires=604800) {
-			return md5(date('Y-m-d H:i',ceil(time()/$expires)*$expires).$_SERVER['REMOTE_ADDR'].$SERVER['HTTP_USER_AGENT'].$str);
+			return md5(date('Y-m-d H:i',ceil(time()/$expires)*$expires).$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT'].$str);
 		}
 
 		function __destruct()

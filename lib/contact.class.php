@@ -1,7 +1,7 @@
 <?php
-	class Contact 
+	class Contact
 	{
-		function __construct() 
+		function __construct()
 		{
 			//
 		}
@@ -18,6 +18,7 @@
 				'search' => "contacts.php?q=search",
 				'more' => "contacts.php?q=create",
 				'approve' => "contacts.php?q=approve",
+                'list' => "notes.php?q=all",
 			),
 		);
 
@@ -63,11 +64,11 @@
 
 		public function edit()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == '') {
 				die('You did not provide an id for this function: Contact->edit()');
 			}
-			if ($this->nonce('edit') == $_POST['nonce']) {
+			if ($this->nonce('edit') == getNonceFromPost()) {
 				$id = $_POST['contact_id'];
 				$contact_fname = $_POST['contact_fname'];
 				$contact_mname = $_POST['contact_mname'];
@@ -93,7 +94,7 @@
 				$contact_edit_ip = $_SERVER['REMOTE_ADDR'];
 				$contact_edit_hostname = getHostByAddr($contact_edit_ip);
 
-				$sql = "UPDATE " . TBL_CONTACTS . " SET 
+				$sql = "UPDATE " . TBL_CONTACTS . " SET
 								contact_fname = '$contact_fname',
 								contact_mname = '$contact_mname',
 								contact_lname = '$contact_lname',
@@ -134,13 +135,13 @@
 			}
 		}
 
-		// function below shows options on main contact page 
+		// function below shows options on main contact page
 		public function cp_main()
 		{
 			echo '
 				<div class="content-box">
-					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a> | 
-					<a href="' . $this->config['pages']['create'] . '">Create a new contact</a>  
+					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a> |
+					<a href="' . $this->config['pages']['create'] . '">Create a new contact</a>
 				</div>
 			';
 		}
@@ -150,9 +151,9 @@
 		{
 			echo '
 				<div class="content-box">
-					<a href="' . $this->config['pages']['view'] . '&id='.$id.'">View all files for this client</a>  
-					 | 
-					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a> 
+					<a href="' . $this->config['pages']['view'] . '&id='.$id.'">View all files for this client</a>
+					 |
+					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a>
 				</div>
 			';
 		}
@@ -162,25 +163,25 @@
 		{
 			echo '
 				<div class="content-box">
-					<a href="' . $this->config['pages']['edit'] . '&id='.$id.'">Re-edit item</a> | 
-					<a href="' . $this->config['pages']['view'] . '&id='.$id.'">View Complete Information</a> | 
-					<a href="' . $this->config['pages']['upload'] . '&id='.$id.'">Upload file for this item</a> | 
-					<a href="' . $this->config['pages']['note'] . '&id='.$id.'">Add a note for this contact</a> | 
-					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a>  
+					<a href="' . $this->config['pages']['edit'] . '&id='.$id.'">Re-edit item</a> |
+					<a href="' . $this->config['pages']['view'] . '&id='.$id.'">View Complete Information</a> |
+					<a href="' . $this->config['pages']['upload'] . '&id='.$id.'">Upload file for this item</a> |
+					<a href="' . $this->config['pages']['note'] . '&id='.$id.'">Add a note for this contact</a> |
+					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a>
 				</div>
 			';
 		}
 
-		// function below shows options for a single entry view 
+		// function below shows options for a single entry view
 		public function cp_byid($id)
 		{
 			echo '
 				<div class="content-box">
-					<a href="' . $this->config['pages']['edit'] . '&id='.$id.'">Edit item</a> | 
-					<a href="' . $this->config['pages']['view'] . '&id='.$id.'">View Complete Information</a> | 
-					<a href="' . $this->config['pages']['upload'] . '&id='.$id.'">Upload file for this item</a> | 
-					<a href="' . $this->config['pages']['note'] . '&id='.$id.'">Add a note for this contact</a> | 
-					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a>  
+					<a href="' . $this->config['pages']['edit'] . '&id='.$id.'">Edit item</a> |
+					<a href="' . $this->config['pages']['view'] . '&id='.$id.'">View Complete Information</a> |
+					<a href="' . $this->config['pages']['upload'] . '&id='.$id.'">Upload file for this item</a> |
+					<a href="' . $this->config['pages']['note'] . '&id='.$id.'">Add a note for this contact</a> |
+					<a href="' . $this->config['pages']['view_all'] . '">View all contacts</a>
 				</div>
 			';
 		}
@@ -196,11 +197,11 @@
 
 		public function upload()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == '') {
 				die('You did not provide id for this function: Contact->upload()');
 			}
-			if ($this->nonce('upload') == $_POST['nonce']) 
+			if ($this->nonce('upload') == getNonceFromPost())
 			{
 				echo '<div class="content-box-header">File Uploaded</div>';
 				echo '<div class="content-box">';
@@ -244,7 +245,7 @@
 						$sql .= "VALUES('$contact_id','$note_type','$note_file_name','$note_file_type',";
 						$sql .= "'$note_file_desc',";
 						$sql .= "'$note_user','$note_create_time','$note_create_ip','$note_create_hostname')";
-						
+
 						//echo 'sql: ' . $sql . '<br />';
 						$result = mysql_query($sql);
 
@@ -266,11 +267,11 @@
 
 		public function note()
 		{
-			$id = $_GET['id'];
+			$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			if ($id == "") {
 				die('You did not provide an id for this function: Contact->note()');
 			}
-			if ($this->nonce('note') == $_POST['nonce']) {
+			if ($this->nonce('note') == getNonceFromPost()) {
 				$contact_id = $_POST['contact_id'];
 				$note_text = htmlentities($_POST['note_text']);
 				$note_user = "1";
@@ -280,12 +281,12 @@
 				$note_create_hostname = getHostByAddr($note_create_ip);
 
 				$sql = "INSERT INTO " . TBL_NOTES . " (
-								contact_id, 
-								note_type, 
-								note_text, 
-								note_user, 
-								note_create_time, 
-								note_create_ip, 
+								contact_id,
+								note_type,
+								note_text,
+								note_user,
+								note_create_time,
+								note_create_ip,
 								note_create_hostname) ";
 				$sql .= "VALUES (
 								'$contact_id',
@@ -316,7 +317,7 @@
 
 		public function search()
 		{
-			if ($this->nonce('search') == $_POST['nonce']) {
+			if ($this->nonce('search') == getNonceFromPost()) {
 				$val = $_POST['search_value'];
 				$sql = "SELECT * FROM " . TBL_CONTACTS . " WHERE contact_fname LIKE '%$val%' OR contact_mname LIKE '%$val%' OR contact_lname LIKE '%$val%'";
 				$result = mysql_query($sql);
@@ -346,7 +347,7 @@
 		public function contactfiles($id)
 		{
 			if ($id == '') {
-				$id = $_GET['id'];
+				$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 			}
 			if ($id == '') {
 				die('You did not provide an id for this function: contact->contactfiles($id)');
@@ -371,7 +372,7 @@
 					';
 					/*
 					echo '
-						<a href="'.$fileloc.'">&#187; '.$filename.'</a> [' . $row['note_file_desc'] . '] 
+						<a href="'.$fileloc.'">&#187; '.$filename.'</a> [' . $row['note_file_desc'] . ']
 						uploaded on <u>' . date('Y-m-d', $row['note_create_time']) . '</u>
 					';
 					*/
@@ -386,19 +387,19 @@
 		{
 			// how many rows to show per page
 			$rowsPerPage = 5;
-			
+
 			// by default we show first page
 			$pageNum = 1;
-			
+
 			// if $_GET['page'] defined, use it as page number
 			if(isset($_GET['page']))
 			{
 					$pageNum = $_GET['page'];
 			}
-			
+
 			// counting the offset
 			$offset = ($pageNum - 1) * $rowsPerPage;
-			
+
 			$sql = "SELECT * FROM " . TBL_NOTES . " WHERE note_file_name is NULL AND contact_id = '$id' ORDER BY note_create_time DESC LIMIT $offset, $rowsPerPage";
 			//$sql = "SELECT * FROM notes WHERE contact_id = '$id'";
 			$result = mysql_query($sql);
@@ -427,26 +428,26 @@
 					</ul>
 					<br />
 				';
-	
+
 				// how many rows we have in database
 				$sql   = "SELECT COUNT(contact_id) AS numrows FROM " . TBL_NOTES . " WHERE contact_id = '$id'";
 				$result  = mysql_query($sql) or die('Error, query failed');
 				$row     = mysql_fetch_array($result, MYSQL_ASSOC);
 				$numrows = $row['numrows'];
-				
+
 				// how many pages we have when using paging?
 				$maxPage = ceil($numrows/$rowsPerPage);
-				
+
 				// print the link to access each page
 				$self = $this->config['pages']['view'] . '&id=' . $id;
 				//$self = $this->config['pages']['list'];
 				$nav  = '';
-				
+
 				if ($pageNum > 1)
 				{
 					 $page  = $pageNum - 1;
 					 $prev  = " <a href=\"$self&page=$page\">[Prev]</a> ";
-				
+
 					 $first = " <a href=\"$self&page=1\">[First Page]</a> ";
 				}
 				else
@@ -454,12 +455,12 @@
 					 $prev  = '&nbsp;'; // we're on page one, don't print previous link
 					 $first = '&nbsp;'; // nor the first page link
 				}
-				
+
 				if ($pageNum < $maxPage)
 				{
 					 $page = $pageNum + 1;
 					 $next = " <a href=\"$self&page=$page\">[Next]</a> ";
-				
+
 					 $last = " <a href=\"$self&page=$maxPage\">[Last Page]</a> ";
 				}
 				else
@@ -468,7 +469,7 @@
 					 $last = '&nbsp;'; // nor the last page link
 				}
 				//echo '<div class="content-box">';
-				echo $fist . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
+				echo $first . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
 				//echo '</div>';
 			} else {
 				echo 'No notes for this contact.';
@@ -478,8 +479,8 @@
 
 		public function showbyid($id = '') {
 			if ($id == '') {
-				$id = $_GET['id'];
-			} 
+				$id = isset($_GET['id']) ? $_GET['id'] : NULL;
+			}
 			if ($id == '') {
 				die('You did not provide an id for this function: Contact->showbyid($id)');
 			}
@@ -511,7 +512,7 @@
 
 		public function create()
 		{
-			if ($this->nonce('create') == $_POST['nonce']) {
+			if ($this->nonce('create') == getNonceFromPost()) {
 				$contact_fname = $_POST['contact_fname'];
 				$contact_mname = $_POST['contact_mname'];
 				$contact_lname = $_POST['contact_lname'];
@@ -572,22 +573,22 @@
 		{
 			// how many rows to show per page
 			$rowsPerPage = 20;
-			
+
 			// by default we show first page
 			$pageNum = 1;
-			
+
 			// if $_GET['page'] defined, use it as page number
 			if(isset($_GET['page']))
 			{
 					$pageNum = $_GET['page'];
 			}
-			
+
 			// counting the offset
 			$offset = ($pageNum - 1) * $rowsPerPage;
-			
+
 			$sql = "SELECT * FROM " . TBL_CONTACTS . " ORDER BY contact_lname LIMIT $offset, $rowsPerPage";
 			$result = mysql_query($sql) or die('Error, query failed');
-			
+
 			echo '
 				<div class="content-box-header">Contact List</div>
 				<div class="content-box">
@@ -626,25 +627,25 @@
 					</table>
 				</div>
 			';
-			
+
 			// how many rows we have in database
 			$sql   = "SELECT COUNT(contact_id) AS numrows FROM " . TBL_CONTACTS . "";
 			$result  = mysql_query($sql) or die('Error, query failed');
 			$row     = mysql_fetch_array($result, MYSQL_ASSOC);
 			$numrows = $row['numrows'];
-			
+
 			// how many pages we have when using paging?
 			$maxPage = ceil($numrows/$rowsPerPage);
-			
+
 			// print the link to access each page
 			$self = $this->config['pages']['list'];
 			$nav  = '';
-			
+
 			if ($pageNum > 1)
 			{
 				 $page  = $pageNum - 1;
 				 $prev  = " <a href=\"$self&page=$page\">[Prev]</a> ";
-			
+
 				 $first = " <a href=\"$self&page=1\">[First Page]</a> ";
 			}
 			else
@@ -652,12 +653,12 @@
 				 $prev  = '&nbsp;'; // we're on page one, don't print previous link
 				 $first = '&nbsp;'; // nor the first page link
 			}
-			
+
 			if ($pageNum < $maxPage)
 			{
 				 $page = $pageNum + 1;
 				 $next = " <a href=\"$self&page=$page\">[Next]</a> ";
-			
+
 				 $last = " <a href=\"$self&page=$maxPage\">[Last Page]</a> ";
 			}
 			else
@@ -666,7 +667,7 @@
 				 $last = '&nbsp;'; // nor the last page link
 			}
 			echo '<div class="content-box">';
-			echo $fist . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
+			echo $first . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
 			echo '</div>';
 		}
 

@@ -1,7 +1,7 @@
 <div class="content-box-header">Search</div>
 <div class="content-box">
-	<form class="fields" method="post" action="<? echo $this->config['pages']['process']; ?>">
-		<input type="hidden" name="nonce" value="<? echo $this->nonce('process'); ?>" />
+	<form class="fields" method="post" action="<?php echo $this->config['pages']['process']; ?>">
+		<input type="hidden" name="nonce" value="<?php echo $this->nonce('process'); ?>" />
 		<ul>
 			<li>
 				<label>First Name: </label>
