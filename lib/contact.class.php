@@ -18,6 +18,7 @@
 				'search' => "contacts.php?q=search",
 				'more' => "contacts.php?q=create",
 				'approve' => "contacts.php?q=approve",
+                'list' => "notes.php?q=all",
 			),
 		);
 
