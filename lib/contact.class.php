@@ -468,7 +468,7 @@
 					 $last = '&nbsp;'; // nor the last page link
 				}
 				//echo '<div class="content-box">';
-				echo $fist . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
+				echo $first . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
 				//echo '</div>';
 			} else {
 				echo 'No notes for this contact.';
@@ -666,7 +666,7 @@
 				 $last = '&nbsp;'; // nor the last page link
 			}
 			echo '<div class="content-box">';
-			echo $fist . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
+			echo $first . $prev . "Showing page $pageNum of $maxPage pages " . $next . $last;
 			echo '</div>';
 		}
 
