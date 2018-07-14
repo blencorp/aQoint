@@ -1,8 +1,0 @@
-if you are using a system dll in your webpart, you have to put a reference
-to the system dll in the web.config of the web application you are using...
-
-open web.config
-find the tag <compilation batch="false" debug="true">
-under the <assemblies> tag
-insert something like the following:
-<add assembly="System.DirectoryServices, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
