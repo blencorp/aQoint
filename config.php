@@ -1,4 +1,5 @@
 <?php
+    require_once 'vendor-tmp/mysql.php';
 	$dbhost = "localhost";
 
 	//ESAi
@@ -6,7 +7,7 @@
 	$dbuser = "bleng3_aqoint";
 
 	/*
-	//local	
+	//local
 	$dbname = "contactms";
 	$dbuser = "contactms";
 	*/
