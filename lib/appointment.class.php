@@ -30,7 +30,7 @@
 				$app_lname = $_POST['app_lname'];
 				$app_phone = $_POST['app_phone'];
 				$app_email = $_POST['app_email'];
-				$app_reason = htmlentities($_POST['app_details']);
+				$app_reason = isset($_POST['app_details']) ? htmlentities($_POST['app_details']) : '';
 				$app_user = "1";
 				$app_type = "appointment";
 				$app_create_time = time();
