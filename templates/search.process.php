@@ -24,7 +24,7 @@
 	}
 
 	//echo 'sql: ' . $sql . '<br />';
-
+    $sql = preg_replace('%OR$%', '', $sql);
 	$result = mysql_query($sql) or die(mysql_error());
 
 	?>
